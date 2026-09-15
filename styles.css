@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6fb;
+  color: #1d2230;
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem 2rem;
+}
+
+h1 {
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  margin-top: 0;
+  color: #4f5d7a;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.25rem;
+  margin-top: 1rem;
+  display: none;
+}
+
+.card.active {
+  display: block;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.92rem;
+}
+
+input,
+textarea {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #c6ccdc;
+  border-radius: 8px;
+  font: inherit;
+}
+
+button {
+  border: none;
+  background: #315efb;
+  color: #fff;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2447c7;
+}
+
+#employee-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#employee-list li {
+  background: #edf1ff;
+  border-radius: 8px;
+  padding: 0.7rem;
+  margin-top: 0.55rem;
+}
