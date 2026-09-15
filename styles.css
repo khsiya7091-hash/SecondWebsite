@@ -77,6 +77,11 @@ button:hover {
   background: #2447c7;
 }
 
+button:disabled {
+  background: #9aa4bf;
+  cursor: not-allowed;
+}
+
 #employee-list {
   list-style: none;
   padding: 0;

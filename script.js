@@ -58,6 +58,14 @@ function resetEmployeeForms() {
   registerData = null;
 }
 
+function updateAddAnotherButtonState() {
+  const full = !hasEmployeeCapacity();
+  addAnotherBtn.disabled = full;
+  addAnotherBtn.textContent = full
+    ? "All 40 employees have been registered"
+    : "Register Another Employee";
+}
+
 signupForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!hasEmployeeCapacity()) {
@@ -114,6 +122,7 @@ questionForm.addEventListener("submit", (event) => {
   });
 
   renderEmployees();
+  updateAddAnotherButtonState();
 
   resultMessage.textContent = `Employee ${registerData?.name || questionData.name} ${
     registerData?.surname || questionData.surname
@@ -123,7 +132,6 @@ questionForm.addEventListener("submit", (event) => {
 
 addAnotherBtn.addEventListener("click", () => {
   if (!hasEmployeeCapacity()) {
-    alert("All 40 employee slots are already used.");
     return;
   }
 
@@ -132,4 +140,5 @@ addAnotherBtn.addEventListener("click", () => {
 });
 
 renderEmployees();
+updateAddAnotherButtonState();
 employeesSection.classList.add("active");

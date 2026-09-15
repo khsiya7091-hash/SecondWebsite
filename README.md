@@ -19,7 +19,7 @@ A simple employee onboarding system for a company with up to 40 employees.
   - Name
   - Surname
   - Position in company
-  - Confirmation check against employee registering details
+  - Confirmation check against employee registration details
 - Automatic employee number generation starting from `1001`
 - Live list of registered employees and count out of 40
 
