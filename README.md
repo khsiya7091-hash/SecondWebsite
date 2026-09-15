@@ -9,13 +9,13 @@ A simple employee onboarding system for a company with up to 40 employees.
   - Surname
   - Bank details
   - Directory names and surnames
-- Employee registering page with:
+- Employee registration page with:
   - Name
   - Surname
   - ID number
   - Address
   - Position
-- Employee question page with:
+- Employee confirmation page with:
   - Name
   - Surname
   - Position in company

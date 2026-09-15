@@ -19,6 +19,10 @@ let signupData = null;
 let registerData = null;
 let employees = [];
 
+function hasEmployeeCapacity() {
+  return employees.length < MAX_EMPLOYEES;
+}
+
 function setActiveSection(sectionToShow) {
   [signupSection, registerSection, questionSection, resultSection].forEach((section) =>
     section.classList.remove("active")
@@ -53,12 +57,20 @@ function resetEmployeeForms() {
 
 signupForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  if (!hasEmployeeCapacity()) {
+    alert("All 40 employee slots are already used.");
+    return;
+  }
   signupData = Object.fromEntries(new FormData(signupForm).entries());
   setActiveSection(registerSection);
 });
 
 registerForm.addEventListener("submit", (event) => {
   event.preventDefault();
+  if (!hasEmployeeCapacity()) {
+    alert("All 40 employee slots are already used.");
+    return;
+  }
   registerData = Object.fromEntries(new FormData(registerForm).entries());
   setActiveSection(questionSection);
 });
@@ -66,7 +78,7 @@ registerForm.addEventListener("submit", (event) => {
 questionForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  if (employees.length >= MAX_EMPLOYEES) {
+  if (!hasEmployeeCapacity()) {
     alert("All 40 employee slots are already used.");
     return;
   }
@@ -107,7 +119,7 @@ questionForm.addEventListener("submit", (event) => {
 });
 
 addAnotherBtn.addEventListener("click", () => {
-  if (employees.length >= MAX_EMPLOYEES) {
+  if (!hasEmployeeCapacity()) {
     alert("All 40 employee slots are already used.");
     return;
   }
