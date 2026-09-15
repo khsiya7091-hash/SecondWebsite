@@ -18,6 +18,7 @@ const employeeList = document.getElementById("employee-list");
 let signupData = null;
 let registerData = null;
 let employees = [];
+let nextEmployeeNumber = STARTING_EMPLOYEE_NUMBER;
 
 function hasEmployeeCapacity() {
   return employees.length < MAX_EMPLOYEES;
@@ -35,7 +36,9 @@ function setActiveSection(sectionToShow) {
 }
 
 function getNextEmployeeNumber() {
-  return STARTING_EMPLOYEE_NUMBER + employees.length;
+  const employeeNumber = nextEmployeeNumber;
+  nextEmployeeNumber += 1;
+  return employeeNumber;
 }
 
 function renderEmployees() {
