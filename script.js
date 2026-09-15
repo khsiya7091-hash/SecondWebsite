@@ -106,6 +106,9 @@ questionForm.addEventListener("submit", (event) => {
   }
 
   const employeeNumber = getNextEmployeeNumber();
+  const registeredName = registerData?.name || questionData.name;
+  const registeredSurname = registerData?.surname || questionData.surname;
+  const registeredPosition = registerData?.position || questionData.position;
 
   employees.push({
     employeeNumber,
@@ -116,17 +119,17 @@ questionForm.addEventListener("submit", (event) => {
     directoryNamesSurnames: signupData?.directoryNamesSurnames || "",
     idNumber: registerData?.idNumber || "",
     address: registerData?.address || "",
-    name: registerData?.name || questionData.name,
-    surname: registerData?.surname || questionData.surname,
-    position: registerData?.position || questionData.position,
+    name: registeredName,
+    surname: registeredSurname,
+    position: registeredPosition,
   });
 
   renderEmployees();
   updateAddAnotherButtonState();
 
-  resultMessage.textContent = `Employee ${registerData?.name || questionData.name} ${
-    registerData?.surname || questionData.surname
-  } was registered with Employee Number ${employeeNumber}.`;
+  resultMessage.textContent = `Employee ${registeredName} ${registeredSurname} was registered with Employee Number ${employeeNumber}.`;
+  registerData = null;
+  questionForm.reset();
   setActiveSection(resultSection);
 });
 
