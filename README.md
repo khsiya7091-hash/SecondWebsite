@@ -19,8 +19,9 @@ A simple employee onboarding system for a company with up to 40 employees.
   - Name
   - Surname
   - Position in company
+  - Confirmation check against employee registering details
 - Automatic employee number generation starting from `1001`
 - Live list of registered employees and count out of 40
 
 ## Run
-Open `/home/runner/work/SecondWebsite/SecondWebsite/index.html` in a browser.
+From the project folder, open `index.html` in a browser.

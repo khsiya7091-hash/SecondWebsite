@@ -24,6 +24,10 @@ function setActiveSection(sectionToShow) {
     section.classList.remove("active")
   );
   sectionToShow.classList.add("active");
+  const firstField = sectionToShow.querySelector("input, textarea, button");
+  if (firstField) {
+    firstField.focus();
+  }
 }
 
 function getNextEmployeeNumber() {
@@ -68,23 +72,37 @@ questionForm.addEventListener("submit", (event) => {
   }
 
   const questionData = Object.fromEntries(new FormData(questionForm).entries());
+  if (
+    registerData &&
+    (registerData.name !== questionData.name ||
+      registerData.surname !== questionData.surname ||
+      registerData.position !== questionData.position)
+  ) {
+    alert("Confirmation details must match the employee data entered on Step 2.");
+    return;
+  }
+
   const employeeNumber = getNextEmployeeNumber();
 
   employees.push({
     employeeNumber,
     companyName: signupData?.companyName || "",
+    signupPersonName: signupData?.name || "",
+    signupPersonSurname: signupData?.surname || "",
     bankDetails: signupData?.bankDetails || "",
     directoryNamesSurnames: signupData?.directoryNamesSurnames || "",
     idNumber: registerData?.idNumber || "",
     address: registerData?.address || "",
-    name: questionData.name,
-    surname: questionData.surname,
-    position: questionData.position,
+    name: registerData?.name || questionData.name,
+    surname: registerData?.surname || questionData.surname,
+    position: registerData?.position || questionData.position,
   });
 
   renderEmployees();
 
-  resultMessage.textContent = `Employee ${questionData.name} ${questionData.surname} was registered with Employee Number ${employeeNumber}.`;
+  resultMessage.textContent = `Employee ${registerData?.name || questionData.name} ${
+    registerData?.surname || questionData.surname
+  } was registered with Employee Number ${employeeNumber}.`;
   setActiveSection(resultSection);
 });
 
